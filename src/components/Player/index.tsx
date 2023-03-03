@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { PlayerProps } from "../../types/types";
 
 export const Player = () => {
   const [bedwarsStats, setBedwarsStats] = useState();
   const [skywarsStats, setSkywarsStats] = useState();
   const [duelsStats, setDuelsStats] = useState();
 
-  const fetchStats = () => {
+  const fetchStats = ({ username }: PlayerProps) => {
     axios
       .get(
         "https://api.hypixel.net/player?uuid=8ed449dc-584b-46f2-b271-5fb518e8dc7b&key=8cce7666-5359-431a-999e-a9394bc11168"
