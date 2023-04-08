@@ -1,21 +1,38 @@
 import axios from "axios";
-import { useState } from "react";
-import { PlayerProps } from "../../types/types";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { bedwarsStats, playerInfo } from "../../types/types";
+import { useNavigate } from "react-router-dom";
 
 export const Player = () => {
-  const [bedwarsStats, setBedwarsStats] = useState();
+  const [bedwarsStats, setBedwarsStats] = useState<bedwarsStats>();
   const [skywarsStats, setSkywarsStats] = useState();
   const [duelsStats, setDuelsStats] = useState();
+  const [playerInfo, setPlayerInfo] = useState<playerInfo>();
 
-  const fetchStats = ({ username }: PlayerProps) => {
-    axios
-      .get(
-        "https://api.hypixel.net/player?uuid=8ed449dc-584b-46f2-b271-5fb518e8dc7b&key=8cce7666-5359-431a-999e-a9394bc11168"
-      )
-      .then((response) => {
-        console.log(response.data.player);
-      });
-  };
+  const [UUID, setUUID] = useState(null);
+
+  const locationDOM = useLocation();
+  const nickname = locationDOM.pathname.replace("/player/", "");
+
+  const navigator = useNavigate();
+  useEffect(() => {
+    const fetchUUID = async() => {
+      const response = await axios.get(`https://api.minetools.eu/uuid/${nickname}`);
+      setUUID(response.data.id)
+      console.log(UUID)
+    }
+
+    const fetchData = async() => {
+      const reponse = await axios.get('')
+    }
+
+    return () => {
+      fetchUUID()
+    }
+  }, [])
+
+  
   return (
     <>
       <div className="w-screen h-screen bg-purple-500">
@@ -30,6 +47,7 @@ export const Player = () => {
               <h1 className="font-redhat font-bold text-2xl uppercase">
                 _Hixo
               </h1>
+              <h2>{UUID}</h2>
             </div>
             <hr className="border-black border-[1.5px] w-[95%] mx-auto mt-2" />
           </div>
