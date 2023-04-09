@@ -15,6 +15,11 @@ export type bedwarsStatsType = {
   kills: number;
   wins: number;
   games_played: number;
+  brokenBeds: number
+  lostBeds: number;
+  collectedRes: number;
+  finalKills: number;
+  purshasedItems: number
   kd: number;
 };
 
@@ -25,4 +30,7 @@ export type skywarsStatsType = {
   kills: number;
   wins: number;
   lastMode: string;
+  openedChest: number, 
+  losses: number;
+  souls: number
 };
