@@ -15,11 +15,11 @@ export const Player = () => {
             <div className="flex items-center gap-4 mt-2 justify-center">
               <img
                 className="w-16"
-                src="https://mc-heads.net/avatar/8ed449dc584b46f2b2715fb518e8dc7b"
+                src={`https://mc-heads.net/avatar/${playerInfo.uuid}`}
                 alt=""
               />
               <h1 className="font-redhat font-bold text-2xl uppercase">
-                _Hixo
+                {playerInfo.displayName}
               </h1>
             </div>
             <hr className="border-black border-[1.5px] w-[99%] mx-auto mt-2" />

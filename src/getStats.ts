@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   bedwarsStatsType,
   playerInfoType,
@@ -7,7 +7,9 @@ import {
 } from "./types/types";
 
 export const getStats = () => {
-  const [uuid, setUUID] = useState<string>("");
+
+  const navigator = useNavigate();
+
   const [bedwarsStats, setBedwarsStats] = useState<bedwarsStatsType>({
     coins: 0,
     deaths: 0,
@@ -31,7 +33,7 @@ export const getStats = () => {
     lastMode: "",
     losses: 0,
     openedChest: 0,
-    souls: 0
+    souls: 0,
   });
   const [playerInfo, setPlayerInfo] = useState<playerInfoType>({
     displayName: "",
@@ -52,13 +54,17 @@ export const getStats = () => {
     );
     const jsonUID = await responseUID.json();
 
+    if (!responseUID.ok) {
+       navigator('/')      
+      return alert("Nie znaleziono gracza!");
+    };
+
     const responseStats = await fetch(
       `https://api.hypixel.net/player?uuid=${jsonUID.data.player.id}&key=${
         import.meta.env.VITE_HYPIXEL_API_KEY
       }`
     );
     const json = await responseStats.json();
-    console.log(json);
     if (!responseStats.ok) return;
     setBedwarsStats({
       coins: json.player.stats.Bedwars["coins"],
@@ -94,7 +100,7 @@ export const getStats = () => {
       wins: json.player.stats.SkyWars["wins"],
       losses: json.player.stats.SkyWars["losses"],
       openedChest: json.player.stats.SkyWars["chests_opened"],
-      souls: json.player.stats.SkyWars["souls"]
+      souls: json.player.stats.SkyWars["souls"],
     });
   };
   // console.log(skywarsStats, playerInfo, bedwarsStats)
