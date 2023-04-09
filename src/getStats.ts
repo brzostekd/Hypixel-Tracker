@@ -45,10 +45,13 @@ export const getStats = () => {
     uuid: 0,
   });
 
+  const [isLoading, setisLoading] = useState(true)
+
   const locationDOM = useLocation();
   const nickname = locationDOM.pathname.replace("/player/", "");
 
   const getData = async () => {
+    setisLoading(true);
     const responseUID = await fetch(
       `https://playerdb.co/api/player/minecraft/${nickname}`
     );
@@ -102,6 +105,7 @@ export const getStats = () => {
       openedChest: json.player.stats.SkyWars["chests_opened"],
       souls: json.player.stats.SkyWars["souls"],
     });
+    setisLoading(false);
   };
   // console.log(skywarsStats, playerInfo, bedwarsStats)
 
@@ -111,5 +115,5 @@ export const getStats = () => {
     };
   }, []);
 
-  return { bedwarsStats, playerInfo, skywarsStats };
+  return { bedwarsStats, playerInfo, skywarsStats, isLoading };
 };

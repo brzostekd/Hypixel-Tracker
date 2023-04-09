@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { getStats } from "../../getStats";
 import { motion } from "framer-motion";
+import { Loading } from "./loading";
 
 export const Player = () => {
-  const { bedwarsStats, playerInfo, skywarsStats } = getStats();
+  const { bedwarsStats, playerInfo, skywarsStats, isLoading } = getStats();
   const [ bedwarsActive, setBedwarsActive ] = useState<boolean>(false);
   const [ skywarsActive, setSkywarsActive ] = useState<boolean>(false);
  
   return (
     <>
       <div className="w-screen h-screen bg-purple-500 overflow-auto">
+        {!isLoading ? (
       <div className="flex justify-between">
           <div className="bg-[#edecff] p-4 m-4 h-[50%] rounded-lg">
             <div className="flex items-center gap-4 mt-2 justify-center">
@@ -35,7 +37,7 @@ export const Player = () => {
             <div className={`bg-[#4b4168] h-auto mb-4 rounded-lg ${bedwarsActive ? 'pt-4' : "py-4"}`}>
               <div className="flex justify-between items-center">
               <p className="font-poppins text-white font-bold px-4 text-3xl">Bedwars</p>
-              <span onClick={() => setBedwarsActive(!bedwarsActive)} className="font-bold text-4xl font-poppins text-white rotate-90 mr-6 cursor-pointer select-none">{'>'}</span> 
+              <span onClick={() => setBedwarsActive(!bedwarsActive)} className={`font-bold text-4xl font-poppins text-white  mr-6 cursor-pointer select-none duration-300 transition-transform ${bedwarsActive ? '-rotate-90' : 'rotate-90'}`}>{'>'}</span> 
               </div>          
               <motion.div
               animate={bedwarsActive ? "open" : "closed"}
@@ -61,7 +63,7 @@ export const Player = () => {
             <div className={`bg-[#4b4168] h-auto mb-4 rounded-lg ${skywarsActive ? 'pt-4' : "py-4"}`}>
               <div className="flex justify-between items-center">
               <p className="font-poppins text-white font-bold px-4 text-3xl">Skywars</p>
-              <span onClick={() => setSkywarsActive(!skywarsActive)} className="font-bold text-4xl font-poppins text-white rotate-90 mr-6 cursor-pointer select-none">{'>'}</span> 
+              <span onClick={() => setSkywarsActive(!skywarsActive)} className={`font-bold text-4xl font-poppins text-white  mr-6 cursor-pointer select-none duration-300 transition-transform ${skywarsActive ? '-rotate-90' : 'rotate-90'}`}>{'>'}</span> 
               </div>          
               <motion.div
               animate={skywarsActive ? "open" : "closed"}
@@ -83,6 +85,10 @@ export const Player = () => {
            </div>
           </div>
         </div>
+
+        ): (
+          <Loading />
+        )}
       </div>
     </>
   );
