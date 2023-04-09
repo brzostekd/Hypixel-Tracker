@@ -41,10 +41,12 @@ export const getStats = () => {
     const jsonUID = await responseUID.json();
 
     const responseStats = await fetch(
-      `https://api.hypixel.net/player?uuid=${jsonUID.data.player.id}&key=8cce7666-5359-431a-999e-a9394bc11168`
+      `https://api.hypixel.net/player?uuid=${jsonUID.data.player.id}&key=${import.meta.env.VITE_HYPIXEL_API_KEY}`
+
     );
-    if (!responseStats.ok) return;
     const json = await responseStats.json();
+    console.log(json)
+    if (!responseStats.ok) return;
     setBedwarsStats({
         coins: json.player.stats.Bedwars["coins"],
         exp: json.player.stats.Bedwars["Experience"],
@@ -72,7 +74,7 @@ export const getStats = () => {
       wins: json.player.stats.SkyWars["wins"]
     })
   };
-  console.log(skywarsStats, playerInfo, bedwarsStats)
+  // console.log(skywarsStats, playerInfo, bedwarsStats)
 
   useEffect(() => {
     return () => {
