@@ -4,6 +4,7 @@ import {
   bedwarsStatsType,
   playerInfoType,
   skywarsStatsType,
+  duelsStatsType, 
 } from "./types/types";
 
 export const getStats = () => {
@@ -35,6 +36,18 @@ export const getStats = () => {
     losses: 0,
     openedChest: 0,
     souls: 0,
+  });
+
+  const [duelsStats, setDuelsStats] = useState<duelsStatsType>({
+    games_played: 0,
+    deaths: 0,
+    coins: 0,
+    kills: 0,
+    wins: 0,
+    blocks_placed: 0,
+    bow_shots: 0,
+    losses: 0,
+    golden_apples_eaten: 0
   });
   
   const [playerInfo, setPlayerInfo] = useState<playerInfoType>({
@@ -72,6 +85,7 @@ export const getStats = () => {
 
     const json = await responseStats.json();
     if (!responseStats.ok) return;
+    console.log(json.player.stats)
     setBedwarsStats({
       coins: json.player.stats.Bedwars["coins"],
       exp: json.player.stats.Bedwars["Experience"],
@@ -108,6 +122,17 @@ export const getStats = () => {
       openedChest: json.player.stats.SkyWars["chests_opened"],
       souls: json.player.stats.SkyWars["souls"],
     });
+    setDuelsStats({
+      coins: json.player.stats.Duels["coins"],
+      deaths: json.player.stats.Duels["deaths"],
+      games_played: json.player.stats.Duels["games_played_duels"],
+      kills: json.player.stats.Duels["kills"],
+      blocks_placed: json.player.stats.Duels["blocks_placed"],
+      wins: json.player.stats.Duels["wins"],
+      losses: json.player.stats.Duels["losses"],
+      bow_shots: json.player.stats.Duels["bow_shots"],
+      golden_apples_eaten: json.player.stats.Duels["golden_apples_eaten"],
+    });
     setisLoading(false);
   };
 
@@ -117,5 +142,5 @@ export const getStats = () => {
     };
   }, []);
 
-  return { bedwarsStats, playerInfo, skywarsStats, isLoading };
+  return { bedwarsStats, playerInfo, skywarsStats, duelsStats, isLoading };
 };

@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import { Loading } from "./loading";
 
 export const Player = () => {
-  const { bedwarsStats, playerInfo, skywarsStats, isLoading } = getStats();
+  const { bedwarsStats, playerInfo, skywarsStats, duelsStats, isLoading } = getStats();
   const [ bedwarsActive, setBedwarsActive ] = useState<boolean>(false);
   const [ skywarsActive, setSkywarsActive ] = useState<boolean>(false);
+  const [ duelsActive, setDuelsActive ] = useState<boolean>(false);
  
   return (
     <>
@@ -83,8 +84,33 @@ export const Player = () => {
                 <p className="stats-item">Dusze: <span>{skywarsStats.souls}</span></p>
                 </motion.div>     
            </div>
+           <div>
+            
+           </div>
+            <div className={`bg-[#4b4168] h-auto mb-4 rounded-lg ${duelsActive ? 'pt-4' : "py-4"}`}>
+              <div className="flex justify-between items-center">
+              <p className="font-poppins text-white font-bold px-4 text-3xl">Duels</p>
+              <span onClick={() => setDuelsActive(!duelsActive)} className={`arrow ${duelsActive ? '-rotate-90' : 'rotate-90'}`}>{'>'}</span> 
+              </div>          
+              <motion.div
+              animate={duelsActive ? "open" : "closed"}
+              variants={{
+                open: { opacity: 1, x: 0 },
+                closed: { opacity: 0 },
+              }}
+              className={`stats ${duelsActive ? "flex" : "hidden"}`}>
+                <p className="stats-item">Zabójstwa: <span>{duelsStats.kills}</span></p>
+                <p className="stats-item">Śmierci: <span>{duelsStats.deaths}</span></p>
+                <p className="stats-item">Zagrane gry: <span>{duelsStats.games_played}</span></p>
+                <p className="stats-item">Monety: <span>{duelsStats.coins}</span></p>
+                <p className="stats-item">Zabójstwa z łuku: <span>{duelsStats.bow_shots}</span></p>
+                <p className="stats-item">Wygrane: <span>{duelsStats.wins}</span></p>
+                <p className="stats-item">Przegrane: <span>{duelsStats.losses}</span></p>
+                <p className="stats-item">Zjedzone złote jabłka: <span>{duelsStats.golden_apples_eaten}</span></p>
+                </motion.div>     
+           </div>
+           </div>
           </div>
-        </div>
         ): (
           <Loading />
         )}

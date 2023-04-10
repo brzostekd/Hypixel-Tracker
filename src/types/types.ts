@@ -34,3 +34,15 @@ export type skywarsStatsType = {
   losses: number;
   souls: number
 };
+
+export type duelsStatsType = {
+  games_played: number;
+  deaths: number;
+  coins: number;
+  kills: number;
+  wins: number;
+  blocks_placed: number;
+  bow_shots: number, 
+  losses: number;
+  golden_apples_eaten: number
+};
