@@ -63,7 +63,7 @@ export const getStats = () => {
   const [isLoading, setisLoading] = useState(true)
 
   const locationDOM = useLocation();
-  const nickname = locationDOM.pathname.replace("Hypixel-Tracker/player/", "");
+  const nickname = locationDOM.pathname.replace("/player/", "");
 
   const getData = async () => {
     setisLoading(true);
@@ -73,7 +73,7 @@ export const getStats = () => {
     const jsonUID = await responseUID.json();
 
     if (!responseUID.ok) {
-       navigator('/Hypixel-Tracker')      
+       navigator('/')      
       return alert("Nie znaleziono gracza!");
     };
 
