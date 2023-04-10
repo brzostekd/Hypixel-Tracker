@@ -63,7 +63,7 @@ export const getStats = () => {
   const [isLoading, setisLoading] = useState(true)
 
   const locationDOM = useLocation();
-  const nickname = locationDOM.pathname.replace("/player/", "");
+  const nickname = locationDOM.pathname.replace("Hypixel-Tracker/player/", "");
 
   const getData = async () => {
     setisLoading(true);
@@ -85,7 +85,6 @@ export const getStats = () => {
 
     const json = await responseStats.json();
     if (!responseStats.ok) return;
-    console.log(json.player.stats)
     setBedwarsStats({
       coins: json.player.stats.Bedwars["coins"],
       exp: json.player.stats.Bedwars["Experience"],
