@@ -73,7 +73,7 @@ export const getStats = () => {
     const jsonUID = await responseUID.json();
 
     if (!responseUID.ok) {
-       navigator('/')      
+       navigator('/Hypixel-Tracker')      
       return alert("Nie znaleziono gracza!");
     };
 
