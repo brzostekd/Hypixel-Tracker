@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     element: <App/>
   },
   {
-    path: "/Hypixel/Tracker/player/:name",
+    path: "/Hypixel-Tracker/player/:name",
     element: <Player />,  
     
   },
