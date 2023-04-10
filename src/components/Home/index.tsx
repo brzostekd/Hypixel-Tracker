@@ -8,7 +8,7 @@ export const Home = () => {
 
     const routeToStats = () => {
         if(username !== null) {
-            navigator(`/player/${username}`)
+            navigator(`/Hypixel-Tracker/player/${username}`)
         }
     }
     
