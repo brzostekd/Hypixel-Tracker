@@ -24,6 +24,7 @@ export const getStats = () => {
     lostBeds: 0,
     purshasedItems: 0,
   });
+
   const [skywarsStats, setSkywarsStats] = useState<skywarsStatsType>({
     games_played: 0,
     deaths: 0,
@@ -35,6 +36,7 @@ export const getStats = () => {
     openedChest: 0,
     souls: 0,
   });
+  
   const [playerInfo, setPlayerInfo] = useState<playerInfoType>({
     displayName: "",
     firstLogin: 0,
@@ -67,6 +69,7 @@ export const getStats = () => {
         import.meta.env.VITE_HYPIXEL_API_KEY
       }`
     );
+
     const json = await responseStats.json();
     if (!responseStats.ok) return;
     setBedwarsStats({
@@ -107,7 +110,6 @@ export const getStats = () => {
     });
     setisLoading(false);
   };
-  // console.log(skywarsStats, playerInfo, bedwarsStats)
 
   useEffect(() => {
     return () => {
