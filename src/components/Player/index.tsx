@@ -26,11 +26,11 @@ export const Player = () => {
             </div>
             <hr className="border-black border-[1.5px] w-[99%] mx-auto mt-2" />
             <div className="flex flex-col items-center space-y-4 justify-center h-[65%] my-6 pb-4">
-              <p className="item">Karma: {playerInfo.karma}</p>
-              <p className="item">UUID: {playerInfo.uuid}</p>
-              <p className="item">Najczęściej grany tryb: {playerInfo.mostRecentGameType}</p>
-              <p className="item">Pierwsze logowanie: {new Date(playerInfo.firstLogin).toLocaleTimeString()} {new Date(playerInfo.firstLogin).toLocaleDateString()}</p>
-              <p className="item">Ostatnie logowanie: {new Date(playerInfo.lastLogin).toLocaleTimeString()} {new Date(playerInfo.lastLogin).toLocaleDateString()}</p>
+              <p className="stats-item">Karma: <span>{playerInfo.karma}</span></p>
+              <p className="stats-item">UUID: <span>{playerInfo.uuid}</span></p>
+              <p className="stats-item">Najczęściej grany tryb: <span>{playerInfo.mostRecentGameType}</span></p>
+              <p className="stats-item">Pierwsze logowanie: <span>{new Date(playerInfo.firstLogin).toLocaleTimeString()} {new Date(playerInfo.firstLogin).toLocaleDateString()}</span></p>
+              <p className="stats-item">Ostatnie logowanie: <span>{new Date(playerInfo.lastLogin).toLocaleTimeString()} {new Date(playerInfo.lastLogin).toLocaleDateString()}</span></p>
             </div>
           </div>
           <div className="h-auto w-full p-4 md:p-0 md:w-[60%] mr-5 mt-4 space-y-6">
@@ -46,18 +46,18 @@ export const Player = () => {
                 closed: { opacity: 0 },
               }}
               className={`stats ${bedwarsActive ? "flex" : "hidden"}`}>
-                <p className="stats-item">Zabójstwa: <span className="font-normal">{bedwarsStats.kills}</span></p>
-                <p className="stats-item">Śmierci: <span className="font-normal">{bedwarsStats.deaths}</span></p>
-                <p className="stats-item">Zdobyte materiały: <span className="font-normal">{bedwarsStats.collectedRes}</span></p>
-                <p className="stats-item">Monety: <span className="font-normal">{bedwarsStats.coins}</span></p>
-                <p className="stats-item">Doświadczenie: <span className="font-normal">{bedwarsStats.exp}</span></p>
-                <p className="stats-item">Zagrane gry: <span className="font-normal">{bedwarsStats.games_played}</span></p>
-                <p className="stats-item">Zniszczone łózka: <span className="font-normal">{bedwarsStats.brokenBeds}</span></p>
-                <p className="stats-item">Stracone łózka: <span className="font-normal">{bedwarsStats.lostBeds}</span></p>
-                <p className="stats-item">Wygrane: <span className="font-normal">{bedwarsStats.wins}</span></p>
-                <p className="stats-item">Kupione itemy: <span className="font-normal">{bedwarsStats.purshasedItems}</span></p>
-                <p className="stats-item">KD: <span className="font-normal">{bedwarsStats.kd.toFixed(2)}</span></p>
-                <p className="stats-item">Finałowe zabójstwa: <span className="font-normal">{bedwarsStats.finalKills}</span></p>
+                <p className="stats-item">Zabójstwa: <span>{bedwarsStats.kills}</span></p>
+                <p className="stats-item">Śmierci: <span>{bedwarsStats.deaths}</span></p>
+                <p className="stats-item">Zdobyte materiały: <span>{bedwarsStats.collectedRes}</span></p>
+                <p className="stats-item">Monety: <span>{bedwarsStats.coins}</span></p>
+                <p className="stats-item">Doświadczenie: <span>{bedwarsStats.exp}</span></p>
+                <p className="stats-item">Zagrane gry: <span>{bedwarsStats.games_played}</span></p>
+                <p className="stats-item">Zniszczone łózka: <span>{bedwarsStats.brokenBeds}</span></p>
+                <p className="stats-item">Stracone łózka: <span>{bedwarsStats.lostBeds}</span></p>
+                <p className="stats-item">Wygrane: <span>{bedwarsStats.wins}</span></p>
+                <p className="stats-item">Kupione itemy: <span>{bedwarsStats.purshasedItems}</span></p>
+                <p className="stats-item">KD: <span>{bedwarsStats.kd.toFixed(2)}</span></p>
+                <p className="stats-item">Finałowe zabójstwa: <span>{bedwarsStats.finalKills}</span></p>
                 </motion.div>     
            </div>
             <div className={`bg-[#4b4168] h-auto mb-4 rounded-lg ${skywarsActive ? 'pt-4' : "py-4"}`}>
@@ -72,15 +72,15 @@ export const Player = () => {
                 closed: { opacity: 0 },
               }}
               className={`stats ${skywarsActive ? "flex" : "hidden"}`}>
-                <p className="stats-item">Zabójstwa: <span className="font-normal">{skywarsStats.kills}</span></p>
-                <p className="stats-item">Śmierci: <span className="font-normal">{skywarsStats.deaths}</span></p>
-                <p className="stats-item">Zagrane gry: <span className="font-normal">{skywarsStats.games_played}</span></p>
-                <p className="stats-item">Monety: <span className="font-normal">{skywarsStats.coins}</span></p>
-                <p className="stats-item">Ostatni tryb: <span className="font-normal">{skywarsStats.lastMode}</span></p>
-                <p className="stats-item">Wygrane: <span className="font-normal">{skywarsStats.wins}</span></p>
-                <p className="stats-item">Przegrane: <span className="font-normal">{skywarsStats.losses}</span></p>
-                <p className="stats-item">KD: <span className="font-normal">{(skywarsStats.kills / skywarsStats.deaths).toFixed(2)}</span></p>
-                <p className="stats-item">Dusze: <span className="font-normal">{skywarsStats.souls}</span></p>
+                <p className="stats-item">Zabójstwa: <span>{skywarsStats.kills}</span></p>
+                <p className="stats-item">Śmierci: <span>{skywarsStats.deaths}</span></p>
+                <p className="stats-item">Zagrane gry: <span>{skywarsStats.games_played}</span></p>
+                <p className="stats-item">Monety: <span>{skywarsStats.coins}</span></p>
+                <p className="stats-item">Ostatni tryb: <span>{skywarsStats.lastMode}</span></p>
+                <p className="stats-item">Wygrane: <span>{skywarsStats.wins}</span></p>
+                <p className="stats-item">Przegrane: <span>{skywarsStats.losses}</span></p>
+                <p className="stats-item">KD: <span>{(skywarsStats.kills / skywarsStats.deaths).toFixed(2)}</span></p>
+                <p className="stats-item">Dusze: <span>{skywarsStats.souls}</span></p>
                 </motion.div>     
            </div>
           </div>
