@@ -11,11 +11,11 @@ import './index.css'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/Hypixel-Tracker/",
     element: <App/>
   },
   {
-    path: "/player/:name",
+    path: "/Hypixel/Tracker/player/:name",
     element: <Player />,  
     
   },
