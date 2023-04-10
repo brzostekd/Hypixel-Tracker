@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://hixo23.github.io/Hypixel-Tracker/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
