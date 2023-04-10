@@ -12,7 +12,7 @@ export const Player = () => {
     <>
       <div className="w-screen h-screen bg-purple-500 overflow-auto">
         {!isLoading ? (
-      <div className="flex justify-between">
+      <div className="flex flex-col md:flex-row justify-between">
           <div className="bg-[#edecff] p-4 m-4 h-[50%] rounded-lg">
             <div className="flex items-center gap-4 mt-2 justify-center">
               <img
@@ -33,7 +33,7 @@ export const Player = () => {
               <p className="item">Ostatnie logowanie: {new Date(playerInfo.lastLogin).toLocaleTimeString()} {new Date(playerInfo.lastLogin).toLocaleDateString()}</p>
             </div>
           </div>
-          <div className="h-auto w-[60%] mr-5 mt-4 space-y-6">
+          <div className="h-auto w-full p-4 md:p-0 md:w-[60%] mr-5 mt-4 space-y-6">
             <div className={`bg-[#4b4168] h-auto mb-4 rounded-lg ${bedwarsActive ? 'pt-4' : "py-4"}`}>
               <div className="flex justify-between items-center">
               <p className="font-poppins text-white font-bold px-4 text-3xl">Bedwars</p>
@@ -85,7 +85,6 @@ export const Player = () => {
            </div>
           </div>
         </div>
-
         ): (
           <Loading />
         )}
