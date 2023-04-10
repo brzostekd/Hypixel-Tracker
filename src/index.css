@@ -6,4 +6,13 @@
     .item {
         @apply bg-gradient-to-br from-indigo-500 to-purple-400 py-2 px-2 text-center md:px-4 font-poppins text-white font-bold rounded-lg flex items-center justify-center;
     }
+    .stats {
+        @apply w-full h-full bg-[#edecff] mt-4 flex-col font-poppins text-[#4b4168] my-2 p-4 rounded-b-lg;
+    }
+    .arrow {
+        @apply font-bold text-4xl font-poppins text-white  mr-6 cursor-pointer select-none duration-300 transition-transform;
+    }
+    .stats-item {
+        @apply px-6 my-1 font-bold;
+    }
 }
